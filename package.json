@@ -1,7 +1,7 @@
 {
-  "name": "alt-demo",
+  "name": "alt-ception",
   "version": "1.0.0",
-  "description": "Alt.js Demo...",
+  "description": "Alt lifecycle diagram... build in Alt!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheBrownSound/alt-spaceship.git"
@@ -19,15 +19,16 @@
   "homepage": "https://github.com/TheBrownSound/alt-spaceship#readme",
   "dependencies": {
     "alt": "^0.18.4",
-    "color": "^0.11.1",
     "react": "^0.14.8",
     "react-dom": "^0.14.8"
   },
   "devDependencies": {
+    "babel-eslint": "^6.0.4",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
+    "eslint": "^1.10.3",
     "jade": "^1.11.0"
   },
   "browserify": {

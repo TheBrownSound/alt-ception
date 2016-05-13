@@ -1,14 +1,23 @@
 {
+  "parser": "babel-eslint",
   "parseroptions": {
     "ecmaversion": 6,
     "sourcetype": "module",
     "ecmafeatures": {
-      "jsx": true
+      "jsx": true,
+      "modules":true
     }
   },
   "env": {
     "es6": true,
     "commonjs": true,
-    "browser": true,
+    "browser": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": "eslint:recommended",
+  "rules": {
+    "strict": 0
   }
 }

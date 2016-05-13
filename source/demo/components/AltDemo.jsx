@@ -1,5 +1,6 @@
-import React    from "react";
-import AltNode from "./AltNode";
+import React           from "react";
+import AltNode         from "./AltNode";
+import AltceptionStore from "../stores/AltceptionStore"
 
 let positions = {
   top:    {left: "50%", top: "20%"},
@@ -23,10 +24,26 @@ let messageStyle = {
 
 let AltDemo = React.createClass({
 
+  getInitialState: function() {
+    return AltceptionStore.getState();
+  },
+
+  componentDidMount: function() {
+    AltceptionStore.listen(this.altChanged);
+  },
+
+  componentWillUnmount: function() {
+    AltceptionStore.unlisten(this.altChanged);
+  },
+
+  altChanged: function(state) {
+    this.setState(state);
+  },
+
   render: function() {
     return (
       <div>
-        <AltNode color="orange" size={60} style={positions.middle} message="woooot" >
+        <AltNode color="orange" size={60} style={positions.middle}>
           <i className="material-icons" style={{fontSize:50}}>gps_fixed</i>
         </AltNode>
         <AltNode color="purple" style={positions.bottom}>
