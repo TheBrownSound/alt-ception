@@ -1,13 +1,12 @@
 import React from "react";
 import Color from "color";
 
-var Container = React.createClass({
+let AltNode = React.createClass({
 
   propTypes: {
     active: React.PropTypes.bool,
     color: React.PropTypes.string,
     message: React.PropTypes.string,
-    title: React.PropTypes.string,
     size: React.PropTypes.number,
     style: React.PropTypes.object
   },
@@ -16,14 +15,12 @@ var Container = React.createClass({
     return {
       active: false,
       color: "#bada55",
-      message: "rawr",
-      title: "Container!",
       size: 200
     }
   },
 
   render: function() {
-    var containerStyle = {
+    let containerStyle = {
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: this.props.color,
@@ -42,13 +39,27 @@ var Container = React.createClass({
       height: this.props.size
     }
 
+    let messageStyle = {
+      backgroundColor: "rgba(0,0,0,0.8)",
+      borderRadius: 4,
+      display: (this.props.message) ? "block":"none",
+      marginTop: (this.props.message) ? 15:0,
+      opacity: (this.props.message) ? 1:0,
+      padding: "10px 15px",
+      position: "absolute",
+      left: "50%",
+      transition: "all 1000ms ease-out",
+      transform: "translateX(-50%)"
+    }
+
     return (
       <div className="container" style={Object.assign(containerStyle, this.props.style)}>
         {this.props.children}
+        <span style={messageStyle}>{this.props.message}</span>
       </div>
     );
   }
 
 });
 
-module.exports = Container;
+module.exports = AltNode;

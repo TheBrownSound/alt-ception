@@ -1,5 +1,5 @@
 import React    from "react";
-import Container from "./Container";
+import AltNode from "./AltNode";
 
 let positions = {
   top:    {left: "50%", top: "20%"},
@@ -26,41 +26,41 @@ let AltDemo = React.createClass({
   render: function() {
     return (
       <div>
-        <Container color="orange" size={60} style={positions.middle} >
+        <AltNode color="orange" size={60} style={positions.middle} message="woooot" >
           <i className="material-icons" style={{fontSize:50}}>gps_fixed</i>
-        </Container>
-        <Container color="purple" style={positions.bottom}>
+        </AltNode>
+        <AltNode color="purple" style={positions.bottom}>
           <h1 style={titleStyle}>
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>chrome_reader_mode</i> Component
           </h1>
           <p style={messageStyle}>
             Buttons, lists, anything user-facing.
           </p>
-        </Container>
-        <Container color="red" style={positions.right} >
+        </AltNode>
+        <AltNode color="red" style={positions.right} >
           <h1 style={titleStyle}>
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>notifications_active</i> Actions
           </h1>
           <p style={messageStyle}>
             Things you want to happen
           </p>
-        </Container>
-        <Container color="green" style={positions.left} >
+        </AltNode>
+        <AltNode color="green" style={positions.left} >
           <h1 style={titleStyle}>
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>store</i> Store
           </h1>
           <p style={messageStyle}>
             State machine that responds to actions and stores data
           </p>
-        </Container>
-        <Container color="blue" style={positions.top} >
+        </AltNode>
+        <AltNode color="blue" style={positions.top} >
           <h1 style={titleStyle}>
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>cloud_done</i> Source
           </h1>
           <p style={messageStyle}>
             Data retrieval. Eg. ajax calls
           </p>
-        </Container>
+        </AltNode>
       </div>
     );
   }
