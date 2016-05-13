@@ -47,6 +47,7 @@
   },
   "scripts": {
     "clean": "rm public/index.html & rm public/app.js",
+    "build:finished": "npm run clean && browserify source/finished/app.js -o public/app.js --extension='.jsx' && jade source/finished/index.jade -o public/",
     "build:js": "browserify source/demo/app.js -o public/app.js --extension='.jsx'",
     "build:html": "jade source/demo/index.jade -o public/",
     "build": "npm run build:js && npm run build:html",
