@@ -4,7 +4,7 @@
   "description": "Alt lifecycle diagram... build in Alt!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheBrownSound/alt-spaceship.git"
+    "url": "git+https://github.com:TheBrownSound/alt-ception.git"
   },
   "keywords": [
     "Alt",
@@ -14,9 +14,9 @@
   "author": "Jarad Comingdeer",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TheBrownSound/alt-spaceship/issues"
+    "url": "https://github.com:TheBrownSound/alt-ception/issues"
   },
-  "homepage": "https://github.com/TheBrownSound/alt-spaceship#readme",
+  "homepage": "https://github.com/TheBrownSound/alt-ception#readme",
   "dependencies": {
     "alt": "^0.18.4",
     "react": "^0.14.8",
