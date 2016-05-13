@@ -9,7 +9,6 @@ class AltceptionActions {
   constructor() {
     // Actions go here!
     this.generateActions(
-      "start",
       "doAction",
       "relayAction",
       "setAValue",

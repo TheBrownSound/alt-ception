@@ -12,25 +12,17 @@ class AltceptionStore {
   constructor() {
     // State variables
     this.data = "Nothing to see here";
-    this.location = "none";
+    this.location = "component";
     this.waiting = false;
-    this.options = [];
+    this.options = ["action"];
 
     // event listeners go here
     this.bindListeners({
-      handleStart: AltceptionActions.start,
       handleAction: AltceptionActions.doAction,
       handleRelayAction: AltceptionActions.relayAction,
       handleValue: AltceptionActions.setAValue,
       handleNewData: AltceptionActions.returnData,
       handleDataError: AltceptionActions.returnError
-    });
-  }
-
-  handleStart() {
-    this.setState({
-      location: "component",
-      options: ["action"]
     });
   }
 

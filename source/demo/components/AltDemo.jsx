@@ -68,55 +68,58 @@ let AltDemo = React.createClass({
     AltceptionActions.setAValue(true);
   },
 
-  getActionButtons: function() {
-    let buttons = [];
-    switch (this.state.location) {
-      case "component":
-        buttons.push(
-          <button onClick={AltceptionActions.doAction}>
-            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>mouse</i> Emit Action
-          </button>
-        );
-      break;
-      case "actions":
-        buttons.push(
-          <button onClick={AltceptionActions.relayAction}>
-            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>replay</i> Relay Action
-          </button>
-        );
-      break;
-      case "store":
-        buttons.push(
-          <button onClick={this.setLocalProperty}>
-            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>archive</i> Set Data
-          </button>
-        );
-        buttons.push(
-          <button onClick={this.fetchExternalData}>
-            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>cloud_upload</i> Fetch Data
-          </button>
-        );
-      break;
-      case "source":
-        buttons.push(
-          <button onClick={AltceptionActions.returnData}>
-            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>cloud_download</i> Return Data
-          </button>
-        );
-        buttons.push(
-          <button onClick={AltceptionActions.returnError}>
-            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>error</i> Report Error
-          </button>
-        );
-      break;
-      default:
-        buttons.push(
-          <button onClick={AltceptionActions.start}>
-            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>thumb_up</i> Start
-          </button>
-        );
+  getOptionAction: function(option) {
+    console.log('getting option for:', option);
+    switch (option) {
+      case "action":
+        return {
+          action: AltceptionActions.doAction,
+          icon: "mouse",
+          text: "Emit Action"
+        };
+      case "relay":
+        return {
+          action: AltceptionActions.relayAction,
+          icon: "replay",
+          text: "Relay Action"
+        };
+      case "set":
+        return {
+          action: this.setLocalProperty,
+          icon: "archive",
+          text: "Set Data"
+        };
+      case "fetch":
+        return {
+          action: this.fetchExternalData,
+          icon: "cloud_upload",
+          text: "Fetch Data"
+        };
+      case "data":
+        return {
+          action: AltceptionActions.returnData,
+          icon: "cloud_download",
+          text: "Return Data"
+        };
+      case "error":
+        return {
+          action: AltceptionActions.returnError,
+          icon: "error",
+          text: "Report Error"
+        };
     }
-    return buttons;
+  },
+
+  getActionButtons: function() {
+    var self = this;
+    return this.state.options.map(function(option) {
+      let optionAction = self.getOptionAction(option);
+      return (
+        <button onClick={optionAction.action}>
+          <i className="material-icons" style={{verticalAlign: "text-bottom"}}>{optionAction.icon}</i> {optionAction.text}
+        </button>
+      );
+    });
   },
 
   render: function() {
