@@ -11,70 +11,11 @@ import AltceptionActions from "../actions/AltceptionActions";
 class AltceptionStore {
   constructor() {
     // State variables
-    this.data = "Nothing to see here";
-    this.location = "component";
-    this.waiting = false;
-    this.options = ["action"];
 
     // event listeners go here
-    this.bindListeners({
-      handleAction: AltceptionActions.doAction,
-      handleRelayAction: AltceptionActions.relayAction,
-      handleValue: AltceptionActions.setAValue,
-      handleNewData: AltceptionActions.returnData,
-      handleDataError: AltceptionActions.returnError
-    });
   }
 
-  handleAction() {
-    this.setState({
-      location: "actions",
-      options: ["relay"]
-    });
-  }
-
-  handleRelayAction() {
-    this.setState({
-      location: "store",
-      options: ["set","fetch"]
-    });
-  }
-
-  handleValue(needsMoreData) {
-    // Often we will recieve actions and require more information before we can accurately set state
-    if (needsMoreData) {
-      this.setState({
-        location: "source",
-        options: ["data","error"],
-        waiting: true
-      });
-      AltceptionSource.getExternalData();
-    } else {
-      this.setState({
-        data: "rawr",
-        location: "component",
-        options: ["action"]
-      });
-    }
-  }
-
-  handleNewData(data) {
-    this.setState({
-      data: data,
-      location: "actions",
-      options: ["relay"],
-      waiting: false
-    });
-  }
-
-  handleDataError(error) {
-    this.setState({
-      data: "Sorry!",
-      location: "actions",
-      options: ["relay"],
-      waiting: false
-    });
-  }
+  // Handlers and private methods
 };
 
 module.exports = Alt.createStore(AltceptionStore, "AltceptionStore");

@@ -60,14 +60,6 @@ let AltDemo = React.createClass({
     }
   },
 
-  setLocalProperty: function() {
-    AltceptionActions.setAValue(false);
-  },
-
-  fetchExternalData: function() {
-    AltceptionActions.setAValue(true);
-  },
-
   getOptionAction: function(option) {
     switch (option) {
       case "action":
@@ -84,13 +76,13 @@ let AltDemo = React.createClass({
         };
       case "set":
         return {
-          action: this.setLocalProperty,
+          action: AltceptionActions.setAValue.bind(this, false),
           icon: "archive",
           text: "Set Data"
         };
       case "fetch":
         return {
-          action: this.fetchExternalData,
+          action: AltceptionActions.setAValue.bind(this, true),
           icon: "cloud_upload",
           text: "Fetch Data"
         };

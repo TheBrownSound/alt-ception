@@ -11,7 +11,6 @@ class AltceptionActions {
     this.generateActions(
       "doAction",
       "relayAction",
-      "setAValue",
       "getSomeData",
       "returnData",
       "returnError"
@@ -19,6 +18,10 @@ class AltceptionActions {
   }
 
   // Or here!
+  setAValue(obj) {
+    console.log("AltceptionActions::setAValue", obj);
+    return obj;
+  }
 }
 
 module.exports = Alt.createActions(AltceptionActions);

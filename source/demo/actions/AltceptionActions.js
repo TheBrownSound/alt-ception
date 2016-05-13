@@ -8,20 +8,9 @@ import Alt from "../alt";
 class AltceptionActions {
   constructor() {
     // Actions go here!
-    this.generateActions(
-      "doAction",
-      "relayAction",
-      "getSomeData",
-      "returnData",
-      "returnError"
-    );
   }
 
   // Or here!
-  setAValue(obj) {
-    console.log("AltceptionActions::setAValue", obj);
-    return obj;
-  }
 }
 
 module.exports = Alt.createActions(AltceptionActions);
