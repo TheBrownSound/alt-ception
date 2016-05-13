@@ -26,6 +26,7 @@ let AltNode = React.createClass({
       backgroundColor: this.props.color,
       border: this.props.size * 0.1 + "px solid" + Color(this.props.color).darken(0.5).hexString(),
       borderRadius: "50%",
+      boxShadow: (!this.props.active) ? "none":"0px 0px 30px 0px " + Color(this.props.color).lighten(0.5).hexString(),
       color: "white",
       display: "flex",
       flexDirection: "column",

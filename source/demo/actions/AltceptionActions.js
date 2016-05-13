@@ -8,6 +8,13 @@ import Alt from "../alt";
 class AltceptionActions {
   constructor() {
     // Actions go here!
+    this.generateActions(
+      "moveToNode",
+      "setAValue",
+      "getSomeData",
+      "dataRetrieved",
+      "dataError"
+    );
   }
 
   // Or here!

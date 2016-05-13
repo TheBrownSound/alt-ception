@@ -40,13 +40,32 @@ let AltDemo = React.createClass({
     this.setState(state);
   },
 
+  getMarkerPosition: function(location) {
+    let offset = {
+      marginTop: 100
+    }
+    switch (location) {
+      case "component":
+        return Object.assign(offset, positions.bottom);
+      case "actions":
+        return Object.assign(offset, positions.right);
+      case "store":
+        return Object.assign(offset, positions.left);
+      case "source":
+        return Object.assign(offset, positions.top);
+      default:
+        return positions.middle;
+    }
+  },
+
   render: function() {
     return (
       <div>
-        <AltNode color="orange" size={60} style={positions.middle}>
-          <i className="material-icons" style={{fontSize:50}}>gps_fixed</i>
-        </AltNode>
-        <AltNode color="purple" style={positions.bottom}>
+        <AltNode
+          active={this.state.location == "component"}
+          color="purple"
+          style={positions.bottom}
+        >
           <h1 style={titleStyle}>
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>chrome_reader_mode</i> Component
           </h1>
@@ -54,7 +73,11 @@ let AltDemo = React.createClass({
             Buttons, lists, anything user-facing.
           </p>
         </AltNode>
-        <AltNode color="red" style={positions.right} >
+        <AltNode
+          active={this.state.location == "actions"}
+          color="red"
+          style={positions.right}
+        >
           <h1 style={titleStyle}>
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>notifications_active</i> Actions
           </h1>
@@ -62,7 +85,11 @@ let AltDemo = React.createClass({
             Things you want to happen
           </p>
         </AltNode>
-        <AltNode color="green" style={positions.left} >
+        <AltNode
+          active={this.state.location == "store"}
+          color="green"
+          style={positions.left}
+        >
           <h1 style={titleStyle}>
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>store</i> Store
           </h1>
@@ -70,13 +97,20 @@ let AltDemo = React.createClass({
             State machine that responds to actions and stores data
           </p>
         </AltNode>
-        <AltNode color="blue" style={positions.top} >
+        <AltNode
+          active={this.state.location == "source"}
+          color="blue"
+          style={positions.top}
+        >
           <h1 style={titleStyle}>
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>cloud_done</i> Source
           </h1>
           <p style={messageStyle}>
             Data retrieval. Eg. ajax calls
           </p>
+        </AltNode>
+        <AltNode color="orange" size={60} style={this.getMarkerPosition(this.state.location)}>
+          <i className="material-icons" style={{fontSize:50}}>gps_fixed</i>
         </AltNode>
       </div>
     );
