@@ -69,7 +69,6 @@ let AltDemo = React.createClass({
   },
 
   getOptionAction: function(option) {
-    console.log('getting option for:', option);
     switch (option) {
       case "action":
         return {
@@ -134,7 +133,7 @@ let AltDemo = React.createClass({
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>chrome_reader_mode</i> Component
           </h1>
           <p style={messageStyle}>
-            Buttons, lists, anything user-facing.
+            Buttons, lists, anything user-facing. Emits Actions!
           </p>
         </AltNode>
         <AltNode
@@ -146,7 +145,7 @@ let AltDemo = React.createClass({
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>notifications_active</i> Actions
           </h1>
           <p style={messageStyle}>
-            Things you want to happen
+            Things you want to happen.
           </p>
         </AltNode>
         <AltNode
@@ -158,7 +157,7 @@ let AltDemo = React.createClass({
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>store</i> Store
           </h1>
           <p style={messageStyle}>
-            State machine that responds to actions and stores data
+            State machine stores data, listens for actions, and requests more data.
           </p>
         </AltNode>
         <AltNode
@@ -170,7 +169,7 @@ let AltDemo = React.createClass({
             <i className="material-icons" style={{verticalAlign: "text-bottom"}}>cloud_done</i> Source
           </h1>
           <p style={messageStyle}>
-            Data retrieval. Eg. ajax calls
+            Data retrieval. Shares responses with actions!
           </p>
         </AltNode>
         <AltMarker style={this.getMarkerPosition(this.state.location)}>
