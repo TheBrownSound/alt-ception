@@ -1,12 +1,16 @@
 {
-  "name": "alt-spaceship",
+  "name": "alt-demo",
   "version": "1.0.0",
-  "description": "Alt.js Demo... IN SPAAAAAACE!",
+  "description": "Alt.js Demo...",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheBrownSound/alt-spaceship.git"
   },
-  "keywords": [ "Alt", "Flux", "Demo" ],
+  "keywords": [
+    "Alt",
+    "Flux",
+    "Demo"
+  ],
   "author": "Jarad Comingdeer",
   "license": "ISC",
   "bugs": {
@@ -15,6 +19,7 @@
   "homepage": "https://github.com/TheBrownSound/alt-spaceship#readme",
   "dependencies": {
     "alt": "^0.18.4",
+    "color": "^0.11.1",
     "react": "^0.14.8",
     "react-dom": "^0.14.8"
   },
@@ -31,7 +36,12 @@
     ]
   },
   "watch": {
-    "build:js": "source/**/*.js",
+    "build:js": {
+      "patterns": [
+        "source"
+      ],
+      "extensions": "js,jsx"
+    },
     "build:html": "source/**/*.jade"
   },
   "scripts": {

@@ -1,7 +1,7 @@
 var React    = require("react");
 var ReactDOM = require("react-dom");
-var SpaceApp = require("./components/SpaceApp");
+var AltDemo = require("./components/AltDemo");
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  ReactDOM.render(<SpaceApp />, document.getElementById("space"));
+  ReactDOM.render(<AltDemo />, document.getElementById("altdemo"));
 });
