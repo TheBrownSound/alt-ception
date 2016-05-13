@@ -9,11 +9,13 @@ class AltceptionActions {
   constructor() {
     // Actions go here!
     this.generateActions(
-      "moveToNode",
+      "start",
+      "doAction",
+      "relayAction",
       "setAValue",
       "getSomeData",
-      "dataRetrieved",
-      "dataError"
+      "returnData",
+      "returnError"
     );
   }
 

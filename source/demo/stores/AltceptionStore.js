@@ -12,31 +12,56 @@ class AltceptionStore {
   constructor() {
     // State variables
     this.data = "Nothing to see here";
-    this.location = "component";
+    this.location = "none";
     this.waiting = false;
+    this.options = [];
 
     // event listeners go here
     this.bindListeners({
-      handleMove: AltceptionActions.moveToNode,
+      handleStart: AltceptionActions.start,
+      handleAction: AltceptionActions.doAction,
+      handleRelayAction: AltceptionActions.relayAction,
       handleValue: AltceptionActions.setAValue,
-      handleNewData: AltceptionActions.dataRetrieved,
-      handleDataError: AltceptionActions.dataError
+      handleNewData: AltceptionActions.returnData,
+      handleDataError: AltceptionActions.returnError
     });
   }
 
-  handleMove(location) {
-    this.setState({location: location});
+  handleStart() {
+    this.setState({
+      location: "component",
+      options: ["action"]
+    });
+  }
+
+  handleAction() {
+    this.setState({
+      location: "actions",
+      options: ["relay"]
+    });
+  }
+
+  handleRelayAction() {
+    this.setState({
+      location: "store",
+      options: ["set","fetch"]
+    });
   }
 
   handleValue(needsMoreData) {
     // Often we will recieve actions and require more information before we can accurately set state
     if (needsMoreData) {
-      this.setState({waiting: true});
+      this.setState({
+        location: "source",
+        options: ["data","error"],
+        waiting: true
+      });
       AltceptionSource.getExternalData();
     } else {
       this.setState({
         data: "rawr",
-        waiting: true
+        location: "component",
+        options: ["action"]
       });
     }
   }
@@ -44,6 +69,8 @@ class AltceptionStore {
   handleNewData(data) {
     this.setState({
       data: data,
+      location: "actions",
+      options: ["relay"],
       waiting: false
     });
   }
@@ -51,6 +78,8 @@ class AltceptionStore {
   handleDataError(error) {
     this.setState({
       data: "Sorry!",
+      location: "actions",
+      options: ["relay"],
       waiting: false
     });
   }

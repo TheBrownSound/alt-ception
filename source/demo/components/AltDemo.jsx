@@ -1,6 +1,8 @@
-import React           from "react";
-import AltNode         from "./AltNode";
-import AltceptionStore from "../stores/AltceptionStore"
+import React             from "react";
+import AltNode           from "./AltNode";
+import AltMarker         from "./AltMarker";
+import AltceptionStore   from "../stores/AltceptionStore";
+import AltceptionActions from "../actions/AltceptionActions";
 
 let positions = {
   top:    {left: "50%", top: "20%"},
@@ -58,6 +60,65 @@ let AltDemo = React.createClass({
     }
   },
 
+  setLocalProperty: function() {
+    AltceptionActions.setAValue(false);
+  },
+
+  fetchExternalData: function() {
+    AltceptionActions.setAValue(true);
+  },
+
+  getActionButtons: function() {
+    let buttons = [];
+    switch (this.state.location) {
+      case "component":
+        buttons.push(
+          <button onClick={AltceptionActions.doAction}>
+            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>mouse</i> Emit Action
+          </button>
+        );
+      break;
+      case "actions":
+        buttons.push(
+          <button onClick={AltceptionActions.relayAction}>
+            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>replay</i> Relay Action
+          </button>
+        );
+      break;
+      case "store":
+        buttons.push(
+          <button onClick={this.setLocalProperty}>
+            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>archive</i> Set Data
+          </button>
+        );
+        buttons.push(
+          <button onClick={this.fetchExternalData}>
+            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>cloud_upload</i> Fetch Data
+          </button>
+        );
+      break;
+      case "source":
+        buttons.push(
+          <button onClick={AltceptionActions.returnData}>
+            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>cloud_download</i> Return Data
+          </button>
+        );
+        buttons.push(
+          <button onClick={AltceptionActions.returnError}>
+            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>error</i> Report Error
+          </button>
+        );
+      break;
+      default:
+        buttons.push(
+          <button onClick={AltceptionActions.start}>
+            <i className="material-icons" style={{verticalAlign: "text-bottom"}}>thumb_up</i> Start
+          </button>
+        );
+    }
+    return buttons;
+  },
+
   render: function() {
     return (
       <div>
@@ -109,9 +170,9 @@ let AltDemo = React.createClass({
             Data retrieval. Eg. ajax calls
           </p>
         </AltNode>
-        <AltNode color="orange" size={60} style={this.getMarkerPosition(this.state.location)}>
-          <i className="material-icons" style={{fontSize:50}}>gps_fixed</i>
-        </AltNode>
+        <AltMarker style={this.getMarkerPosition(this.state.location)}>
+          {this.getActionButtons()}
+        </AltMarker>
       </div>
     );
   }

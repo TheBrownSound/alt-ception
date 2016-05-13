@@ -7,6 +7,9 @@ import AltceptionActions from "../actions/AltceptionActions";
 
 const AltceptionSource = {
   // Data calls go here
+  getExternalData: function() {
+    console.log("blackhole!");
+  }
 };
 
 module.exports = AltceptionSource;
